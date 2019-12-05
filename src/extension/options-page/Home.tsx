@@ -16,7 +16,7 @@ import {
 import { Link, useHistory } from 'react-router-dom'
 import { useMyIdentities } from '../../components/DataSource/useActivatedUI'
 import Services from '../service'
-import { PersonIdentifier } from '../../database/type'
+import { ProfileIdentifier } from '../../database/type'
 
 import { geti18nString } from '../../utils/i18n'
 
@@ -72,6 +72,11 @@ const useStyles = makeStyles((theme: Theme) =>
             bottom: 0,
             position: 'absolute',
         },
+        identity: {
+            '&:not(:first-child)': {
+                marginTop: theme.spacing(2),
+            },
+        },
     }),
 )
 
@@ -88,7 +93,7 @@ export default function DashboardHomePage() {
 
     const exportData = () => {
         setExportLoading(true)
-        Services.Welcome.backupMyKeyPair(PersonIdentifier.unknown, {
+        Services.Welcome.backupMyKeyPair({
             download: true,
             onlyBackupWhoAmI: false,
         })
@@ -143,6 +148,8 @@ export default function DashboardHomePage() {
                         </ListItemWithAction>
                     </List>
                 </Card>
+            </section>
+            <section className={classes.sections}>
                 <Typography className={classes.title} variant="h5" align="left">
                     My Personas
                 </Typography>
@@ -167,7 +174,7 @@ export default function DashboardHomePage() {
                 )}
                 <div>
                     {identities.map(i => (
-                        <Card raised elevation={1}>
+                        <Card className={classes.identity} raised elevation={1}>
                             <PersonaCard identity={i} key={i.identifier.toText()} />
                         </Card>
                     ))}

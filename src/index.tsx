@@ -42,6 +42,7 @@ import DashboardHomePage from './extension/options-page/Home'
 import DashboardDebugPage from './extension/options-page/Debug'
 import DashboardInitializeDialog from './extension/options-page/Initialize'
 import classNames from 'classnames'
+import { useMyIdentities } from './components/DataSource/useActivatedUI'
 
 const useStyles = makeStyles(theme =>
     createStyles({
@@ -74,7 +75,7 @@ const useStyles = makeStyles(theme =>
         },
         tabBar: {},
         tabItem: {
-            minWidth: 120,
+            minWidth: 110,
         },
         tabSelected: {
             background: 'rgba(237, 243, 254, 0.8)',
