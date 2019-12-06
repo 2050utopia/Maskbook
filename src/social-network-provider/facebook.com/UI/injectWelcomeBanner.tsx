@@ -1,4 +1,3 @@
-import React from 'react'
 import { LiveSelector, MutationObserverWatcher } from '@holoflows/kit/es'
 import { isMobileFacebook } from '../isMobile'
 import { renderInShadowRoot } from '../../../utils/jss/renderInShadowRoot'

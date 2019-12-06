@@ -1,4 +1,3 @@
-import React, { useState, useMemo } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -15,8 +14,8 @@ const useStyles = makeStyles({
 export function SeeMyProvePost() {
     const classes = useStyles()
     const [whoAmI, chooseIdentity] = useIsolatedChooseIdentity()
-    const [provePost, setProvePost] = useState<string | null>('')
-    useMemo(() => {
+    const [provePost, setProvePost] = React.useState<string | null>('')
+    React.useMemo(() => {
         if (!whoAmI) return null
         Services.Crypto.getMyProveBio(whoAmI.identifier).then(setProvePost)
     }, [whoAmI])

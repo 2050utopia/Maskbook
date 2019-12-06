@@ -1,5 +1,3 @@
-import * as React from 'react'
-import { useCallback, useRef, useState } from 'react'
 import { SelectPeopleAndGroupsUI, SelectPeopleAndGroupsUIProps } from '../shared/SelectPeopleAndGroups'
 import { useCapturedInput } from '../../utils/hooks/useCapturedEvents'
 import { Avatar } from '../../utils/components/Avatar'
@@ -54,7 +52,7 @@ export interface AdditionalPostBoxUIProps
  */
 export const AdditionalPostBoxUI = React.memo(function AdditionalPostBoxUI(props: AdditionalPostBoxUIProps) {
     const classes = useStylesExtends(useStyles(), props)
-    const inputRef = useRef<HTMLInputElement>()
+    const inputRef = React.useRef<HTMLInputElement>()
     useCapturedInput(inputRef, props.onPostTextChange)
 
     return (
@@ -122,7 +120,7 @@ export function AdditionalPostBox(props: AdditionalPostBoxProps) {
 
     const onRequestPost = or(
         props.onRequestPost,
-        useCallback(
+        React.useCallback(
             async (target: (Profile | Group)[], text: string) => {
                 const [encrypted, token] = await Services.Crypto.encryptTo(
                     text,
@@ -151,16 +149,16 @@ export function AdditionalPostBox(props: AdditionalPostBoxProps) {
     )
     const onRequestReset = or(
         props.onRequestReset,
-        useCallback(() => {
+        React.useCallback(() => {
             setPostText('')
             onShareTargetChanged([])
         }, []),
     )
 
-    const [postText, setPostText] = useState('')
-    const [currentShareTarget, onShareTargetChanged] = useState(availableShareTarget)
+    const [postText, setPostText] = React.useState('')
+    const [currentShareTarget, onShareTargetChanged] = React.useState(availableShareTarget)
 
-    const [showWelcome, setShowWelcome] = useState(false)
+    const [showWelcome, setShowWelcome] = React.useState(false)
     useAsync(getActivatedUI().shouldDisplayWelcome, []).then(x => setShowWelcome(x))
     if (showWelcome || identities.length === 0) {
         return <NotSetupYetPrompt {...props.NotSetupYetPromptProps} />

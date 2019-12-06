@@ -1,4 +1,3 @@
-import React, { useEffect, useRef } from 'react'
 import { useCapturedInput } from '../../utils/hooks/useCapturedEvents'
 import { PropsOf } from '@emotion/styled-base/types/helper'
 import { geti18nString } from '../../utils/i18n'
@@ -36,9 +35,9 @@ export interface CommentBoxProps {
 }
 export function CommentBox(props: CommentBoxProps) {
     const classes = useStyles()
-    const inputRef = useRef<HTMLInputElement>(null)
+    const inputRef = React.useRef<HTMLInputElement>(null)
     const binder = useCapturedInput(inputRef, () => {})
-    useEffect(
+    React.useEffect(
         binder(['keypress'], e => {
             if (!inputRef.current) return
             if (e.key === 'Enter') {

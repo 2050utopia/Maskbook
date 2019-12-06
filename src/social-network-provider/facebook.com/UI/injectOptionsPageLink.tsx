@@ -1,4 +1,3 @@
-import React from 'react'
 import { getUrl } from '../../../utils/utils'
 import { LiveSelector, MutationObserverWatcher } from '@holoflows/kit'
 import { renderInShadowRoot } from '../../../utils/jss/renderInShadowRoot'

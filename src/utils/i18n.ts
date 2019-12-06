@@ -1,6 +1,5 @@
 import en from '../_locales/en/messages.json'
 import zh from '../_locales/zh/messages.json'
-import React from 'react'
 
 export type I18NStrings = typeof en
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import MuiAvatar, { AvatarProps } from '@material-ui/core/Avatar/Avatar'
 import { Profile } from '../../database'
 interface Props extends AvatarProps {

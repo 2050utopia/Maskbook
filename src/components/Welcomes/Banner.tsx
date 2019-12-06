@@ -1,5 +1,3 @@
-import * as React from 'react'
-import { useCallback } from 'react'
 import { geti18nString } from '../../utils/i18n'
 import { makeStyles } from '@material-ui/styles'
 import {
@@ -132,7 +130,7 @@ export type BannerProps = Partial<Props> & { unmount?(): void }
 export function Banner(props: BannerProps) {
     const lastRecognizedIdentity = useLastRecognizedIdentity()
     const { nextStep, unmount } = props
-    const defaultClose = useCallback(() => {
+    const defaultClose = React.useCallback(() => {
         getActivatedUI().ignoreSetupAccount(env, {})
         unmount?.()
     }, [unmount])
@@ -140,7 +138,7 @@ export function Banner(props: BannerProps) {
     const networkIdentifier = getActivatedUI()?.networkIdentifier
 
     const [value, onChange] = React.useState('')
-    const defaultNextStep = useCallback(() => {
+    const defaultNextStep = React.useCallback(() => {
         if (nextStep === 'hidden') return
         if (!networkIdentifier) {
             nextStep?.onClick()

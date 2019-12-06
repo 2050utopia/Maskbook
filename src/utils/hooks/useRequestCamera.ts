@@ -1,5 +1,4 @@
 /** This file is published under MIT License */
-import { useEffect, useState } from 'react'
 import { useAsync } from '../components/AsyncComponent'
 import { hasIn } from 'lodash-es'
 
@@ -17,9 +16,9 @@ export function checkPermissionApiUsability(type?: typeof q[number]) {
 }
 
 export function useRequestCamera(needRequest: boolean) {
-    const [permission, updatePermission] = useState<PermissionState>('prompt')
+    const [permission, updatePermission] = React.useState<PermissionState>('prompt')
 
-    useEffect(() => {
+    React.useEffect(() => {
         let permissionStatus: PermissionStatus
 
         if (checkPermissionApiUsability('query')) {

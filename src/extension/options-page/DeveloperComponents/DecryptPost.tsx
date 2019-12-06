@@ -1,4 +1,3 @@
-import React, { useMemo, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -12,7 +11,7 @@ import { FormControlLabel, Checkbox } from '@material-ui/core'
 export function DecryptPostDeveloperMode() {
     const [whoAmI, chooseIdentity] = useIsolatedChooseIdentity()
     // const [network, networkInput] = useTextField('Network', { defaultValue: 'facebook.com', required: true })
-    const [postByMyself, setPostByMyself] = useState(false)
+    const [postByMyself, setPostByMyself] = React.useState(false)
     const [author, authorInput] = useTextField('Author ID of this post', {
         required: !postByMyself,
         disabled: postByMyself,
@@ -22,7 +21,7 @@ export function DecryptPostDeveloperMode() {
         required: true,
     })
     const network = whoAmI ? whoAmI.identifier.network : 'localhost'
-    const authorIdentifier = useMemo(() => new ProfileIdentifier(network, author), [network, author])
+    const authorIdentifier = React.useMemo(() => new ProfileIdentifier(network, author), [network, author])
     const whoAmIIdentifier = whoAmI ? whoAmI.identifier : ProfileIdentifier.unknown
     return (
         <Card>

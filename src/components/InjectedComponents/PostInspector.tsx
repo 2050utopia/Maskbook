@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { DecryptPost, DecryptPostProps } from './DecryptedPost'
 import { AddToKeyStore, AddToKeyStoreProps } from './AddToKeyStore'
 import { useAsync } from '../../utils/components/AsyncComponent'
@@ -27,7 +26,7 @@ export function PostInspector(props: PostInspectorProps) {
     const { post, postBy, postId } = props
     const whoAmI = useCurrentIdentity()
     const people = useFriendsList()
-    const [alreadySelectedPreviously, setAlreadySelectedPreviously] = useState<Profile[]>([])
+    const [alreadySelectedPreviously, setAlreadySelectedPreviously] = React.useState<Profile[]>([])
     const decodeAsPublicKey = getActivatedUI().publicKeyDecoder(post)
     const isDebugging = useValueRef(debugModeSetting)
     const type = {

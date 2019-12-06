@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { getUrl } from '../../utils/utils'
 import { geti18nString } from '../../utils/i18n'
 import { Typography, Button, makeStyles, Theme } from '@material-ui/core'

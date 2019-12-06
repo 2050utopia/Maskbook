@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { getUrl } from '../../utils/utils'
 import { makeStyles, Typography, Link, Card } from '@material-ui/core'
 import anchorme from 'anchorme'

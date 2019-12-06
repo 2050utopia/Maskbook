@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { geti18nString } from '../../utils/i18n'
 import {
     Typography,

@@ -1,4 +1,3 @@
-import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Welcome1a1a from '../components/Welcomes/1a1a'
 import Welcome1a1b from '../components/Welcomes/1a1b'

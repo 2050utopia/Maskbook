@@ -1,4 +1,3 @@
-import React from 'react'
 import AsyncComponent from '../../utils/components/AsyncComponent'
 import { AdditionalContent, AdditionalContentProps } from './AdditionalPostContent'
 import Services from '../../extension/service'

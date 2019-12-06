@@ -1,5 +1,3 @@
-import * as React from 'react'
-import { useState } from 'react'
 import { geti18nString } from '../../utils/i18n'
 import { Button, makeStyles, Typography, Theme } from '@material-ui/core'
 import WelcomeContainer from './WelcomeContainer'
@@ -27,7 +25,7 @@ const useStyles = makeStyles<Theme>(theme => ({
 }))
 export default function Welcome({ next, identities, linkNewSocialNetworks }: Props) {
     const classes = useStyles()
-    const [selected, setSelect] = useState<Profile | null>(identities[0] || null)
+    const [selected, setSelect] = React.useState<Profile | null>(identities[0] || null)
     return (
         <WelcomeContainer className={classes.paper}>
             <Typography variant="h5">{geti18nString('welcome_1a1_title')}</Typography>

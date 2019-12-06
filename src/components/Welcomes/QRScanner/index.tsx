@@ -1,6 +1,4 @@
 /// <reference path="./ShapeDetectionPolyfill.ts" />
-import * as React from 'react'
-import { useRef } from 'react'
 import { useQRCodeScan } from '../../../utils/hooks/useQRCodeScan'
 
 interface Props {
@@ -15,7 +13,7 @@ export default function QRScanner(
     props: Props & React.DetailedHTMLProps<React.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>,
 ) {
     const { scanning, onResult, onError, ...videoProps } = props
-    const video = useRef<HTMLVideoElement | null>(null)
+    const video = React.useRef<HTMLVideoElement | null>(null)
 
     useQRCodeScan(video, scanning, x => onResult(x), onError)
     return (

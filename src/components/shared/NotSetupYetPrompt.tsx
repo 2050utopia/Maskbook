@@ -1,4 +1,3 @@
-import React from 'react'
 import { geti18nString } from '../../utils/i18n'
 import { Banner, BannerProps } from '../Welcomes/Banner'
 

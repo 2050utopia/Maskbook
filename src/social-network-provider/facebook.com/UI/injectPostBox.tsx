@@ -1,4 +1,3 @@
-import React from 'react'
 import { LiveSelector, MutationObserverWatcher } from '@holoflows/kit'
 import { renderInShadowRoot } from '../../../utils/jss/renderInShadowRoot'
 import { AdditionalPostBox } from '../../../components/InjectedComponents/AdditionalPostBox'

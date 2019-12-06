@@ -1,4 +1,3 @@
-import React, { useCallback, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel'
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
@@ -50,7 +49,7 @@ export const ChooseIdentity: React.FC<ChooseIdentityProps> = props => {
         useCurrentIdentity() || ({ identifier: ProfileIdentifier.unknown, nickname: 'Nothing' } as Profile)
     const { availableIdentities = all, current = currentDefault } = props
 
-    const handleChange = useCallback(() => {
+    const handleChange = React.useCallback(() => {
         setExpanded(!expanded)
     }, [expanded])
 
@@ -107,7 +106,7 @@ ChooseIdentity.defaultProps = {
 export function useIsolatedChooseIdentity(): readonly [Profile | null, React.ReactNode] {
     const all = useMyIdentities()
     const whoami = useCurrentIdentity()
-    const [current, set] = useState<Profile>()
+    const [current, set] = React.useState<Profile>()
     const selected = current || whoami || undefined
     return [
         selected || null,

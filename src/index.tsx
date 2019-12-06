@@ -1,3 +1,4 @@
+import './setup.react'
 import './provider.worker'
 
 import {
@@ -19,7 +20,6 @@ import {
 
 import BackIcon from '@material-ui/icons/ArrowBack'
 
-import React from 'react'
 import { ThemeProvider, withStyles } from '@material-ui/styles'
 import { MaskbookDarkTheme, MaskbookLightTheme } from './utils/theme'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'

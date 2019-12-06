@@ -1,4 +1,3 @@
-import * as React from 'react'
 import Identity from './Identity'
 import { Typography, Button, Theme, useTheme } from '@material-ui/core'
 import { styled } from '@material-ui/styles'

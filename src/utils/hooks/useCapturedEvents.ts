@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useCallback } from 'react'
 
 /**
  * ! Call this hook inside Shadow Root!
@@ -9,8 +8,8 @@ export function useCapturedInput(
     onChange: (newVal: string) => void,
     deps: any[] = [],
 ) {
-    const stop = useCallback((e: Event) => e.stopPropagation(), deps)
-    const use = useCallback(
+    const stop = React.useCallback((e: Event) => e.stopPropagation(), deps)
+    const use = React.useCallback(
         (e: Event) => onChange((e.currentTarget as HTMLInputElement).value),
         [onChange].concat(deps),
     )
@@ -24,8 +23,8 @@ export function useCapturedInput(
             }
         }
     }
-    useEffect(binder(['input'], use), [ref.current].concat(deps))
-    useEffect(
+    React.useEffect(binder(['input'], use), [ref.current].concat(deps))
+    React.useEffect(
         binder(
             [
                 'paste',

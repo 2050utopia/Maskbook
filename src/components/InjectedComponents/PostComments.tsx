@@ -1,4 +1,3 @@
-import React from 'react'
 import { Chip, makeStyles } from '@material-ui/core'
 import Lock from '@material-ui/icons/Lock'
 import AsyncComponent from '../../utils/components/AsyncComponent'

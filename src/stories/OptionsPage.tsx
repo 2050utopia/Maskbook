@@ -1,4 +1,3 @@
-import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Identity from '../components/Dashboard/Identity'
 import { demoPeople } from './demoPeopleOrGroups'

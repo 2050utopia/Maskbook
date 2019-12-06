@@ -14,7 +14,6 @@ import {
     ListItemText,
     makeStyles,
 } from '@material-ui/core'
-import React, { useState } from 'react'
 import { Profile } from '../../../database'
 import { Avatar } from '../../../utils/components/Avatar'
 import { useTextField } from '../../../utils/components/useForms'
@@ -22,7 +21,7 @@ import Services from '../../service'
 
 export function FriendsDeveloperMode() {
     const friends = useFriendsList()
-    const [editing, setEditing] = useState<Profile>()
+    const [editing, setEditing] = React.useState<Profile>()
     const closeDialog = () => setEditing(undefined)
     return (
         <>

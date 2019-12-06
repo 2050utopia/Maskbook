@@ -1,4 +1,3 @@
-import React from 'react'
 import { DOMProxy, ValueRef } from '@holoflows/kit'
 import { PostInfo } from '../ui'
 import { renderInShadowRoot } from '../../utils/jss/renderInShadowRoot'

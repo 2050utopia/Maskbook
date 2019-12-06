@@ -1,4 +1,3 @@
-import React, { useCallback, useState } from 'react'
 import { SelectPeopleAndGroupsUI, SelectPeopleAndGroupsUIProps } from '../shared/SelectPeopleAndGroups'
 import { geti18nString } from '../../utils/i18n'
 import { makeStyles } from '@material-ui/styles'
@@ -31,15 +30,15 @@ const useStyles = makeStyles({
 const ResponsiveDialog = withMobileDialog({ breakpoint: 'xs' })(Dialog)
 export function SelectPeopleDialog(props: SelectPeopleDialogProps) {
     const classes = useStylesExtends(useStyles(), props)
-    const [people, select] = useState<Profile[]>([] as Profile[])
-    const [committed, setCommitted] = useState(false)
-    const onClose = useCallback(() => {
+    const [people, select] = React.useState<Profile[]>([] as Profile[])
+    const [committed, setCommitted] = React.useState(false)
+    const onClose = React.useCallback(() => {
         props.onClose()
         setCommitted(false)
         select([])
     }, [props])
-    const [rejection, onReject] = useState<Error>()
-    const share = useCallback(() => {
+    const [rejection, onReject] = React.useState<Error>()
+    const share = React.useCallback(() => {
         setCommitted(true)
         props.onSelect(people).then(onClose, onReject)
     }, [onClose, people, props])
@@ -92,9 +91,9 @@ export function useShareMenu(
     alreadySelectedPreviously: Profile[],
     SelectPeopleDialogProps?: Partial<SelectPeopleDialogProps>,
 ) {
-    const [show, setShow] = useState(false)
-    const showShare = useCallback(() => setShow(true), [])
-    const hideShare = useCallback(() => setShow(false), [])
+    const [show, setShow] = React.useState(false)
+    const showShare = React.useCallback(() => setShow(true), [])
+    const hideShare = React.useCallback(() => setShow(false), [])
 
     return {
         showShare,

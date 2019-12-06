@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import {
     Dialog,
@@ -53,14 +52,14 @@ export default function BackupDialog() {
     const search = new URLSearchParams(history.location.search)
 
     const classes = useStyles()
-    const [backupObj, setBackupObj] = useState<BackupJSONFileLatest | null>(null)
-    const [QRText, setQRText] = useState('')
-    const [showQRCode, setShowQRCode] = useState(search.get('qr') === null ? false : true)
+    const [backupObj, setBackupObj] = React.useState<BackupJSONFileLatest | null>(null)
+    const [QRText, setQRText] = React.useState('')
+    const [showQRCode, setShowQRCode] = React.useState(search.get('qr') === null ? false : true)
 
     const identity = search.get('identity') || ''
     const currentIdentifier = ProfileIdentifier.fromString(identity) as ProfileIdentifier
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (!currentIdentifier) return
         Services.Welcome.backupMyKeyPair({ download: false, onlyBackupWhoAmI: true })
             .then(backupObj => {

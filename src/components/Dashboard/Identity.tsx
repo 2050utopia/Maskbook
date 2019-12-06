@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { FixedWidthFonts } from '../../utils/theme'
 import classNames from 'classnames'
 import { Avatar } from '../../utils/components/Avatar'

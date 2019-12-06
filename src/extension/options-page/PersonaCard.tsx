@@ -1,4 +1,3 @@
-import React, { useState, useMemo, useRef } from 'react'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -97,13 +96,13 @@ export default function PersonaCard({ identity }: Props) {
     const classes = useStyles()
     const color = useColorProvider()
 
-    const [provePost, setProvePost] = useState<string>('')
+    const [provePost, setProvePost] = React.useState<string>('')
 
-    useMemo(() => {
+    React.useMemo(() => {
         Services.Crypto.getMyProveBio(identity.identifier).then(p => setProvePost(p || ''))
     }, [identity.identifier])
 
-    const friendlyName = useMemo(() => {
+    const friendlyName = React.useMemo(() => {
         const ui = [...definedSocialNetworkUIs].find(i => i.networkIdentifier === identity.identifier.network)
         return ui ? ui.friendlyName : `${geti18nString('dashboard_unknown_network')}(${identity.identifier.network})`
     }, [identity.identifier.network])
@@ -149,7 +148,7 @@ export default function PersonaCard({ identity }: Props) {
             })
     }
 
-    const [rename, setRename] = useState(false)
+    const [rename, setRename] = React.useState(false)
 
     const renameIdentity = (event: React.FocusEvent<HTMLSpanElement> | React.KeyboardEvent<HTMLSpanElement>) => {
         event.preventDefault()
@@ -161,7 +160,7 @@ export default function PersonaCard({ identity }: Props) {
         )
     }
 
-    const titleRef = useRef<HTMLSpanElement | null>(null)
+    const titleRef = React.useRef<HTMLSpanElement | null>(null)
 
     return (
         <Card className={classes.card} raised elevation={3}>

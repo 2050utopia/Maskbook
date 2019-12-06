@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { useDragAndDrop } from '../../utils/hooks/useDragAndDrop'
 import { geti18nString } from '../../utils/i18n'
 import {

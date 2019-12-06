@@ -1,4 +1,3 @@
-import React, { useMemo, useState } from 'react'
 import AsyncComponent from '../../utils/components/AsyncComponent'
 import { AdditionalContent, AdditionalContentProps } from './AdditionalPostContent'
 import { useShareMenu } from './SelectPeopleDialog'
@@ -142,16 +141,16 @@ export function DecryptPost(props: DecryptPostProps) {
 
     const { postBy, whoAmI, encryptedText, people, alreadySelectedPreviously, requestAppendRecipients } = props
 
-    const [decryptedResult, setDecryptedResult] = useState<null | SuccessDecryption>(null)
-    const [decryptingStatus, setDecryptingStatus] = useState<DecryptionProgress | FailureDecryption | undefined>(
+    const [decryptedResult, setDecryptedResult] = React.useState<null | SuccessDecryption>(null)
+    const [decryptingStatus, setDecryptingStatus] = React.useState<DecryptionProgress | FailureDecryption | undefined>(
         undefined,
     )
 
-    const [debugHash, setDebugHash] = useState<string>('Unknown')
+    const [debugHash, setDebugHash] = React.useState<string>('Unknown')
     const setting = useValueRef(debugModeSetting)
     const isDebugging = GetContext() === 'options' ? true : setting
 
-    const requestAppendRecipientsWrapped = useMemo(() => {
+    const requestAppendRecipientsWrapped = React.useMemo(() => {
         if (!postBy.equals(whoAmI)) return undefined
         if (!requestAppendRecipients) return undefined
         return async (people: Profile[]) => {
@@ -159,7 +158,7 @@ export function DecryptPost(props: DecryptPostProps) {
             await sleep(1500)
         }
     }, [requestAppendRecipients, postBy, whoAmI])
-    const debugHashJSX = useMemo(() => {
+    const debugHashJSX = React.useMemo(() => {
         if (!isDebugging) return null
         const postPayload = deconstructPayload(encryptedText, null)
         if (!postPayload) return null

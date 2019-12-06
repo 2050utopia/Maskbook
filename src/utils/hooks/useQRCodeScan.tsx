@@ -1,6 +1,5 @@
 /// <reference path="../../components/Welcomes/QRScanner/ShapeDetectionSpec.d.ts" />
 /** This file is published under MIT License */
-import { useRef, useEffect, useState } from 'react'
 import { useRequestCamera, getBackVideoDeviceId } from './useRequestCamera'
 import { useInterval } from './useInterval'
 import '../../components/Welcomes/QRScanner/ShapeDetectionPolyfill'
@@ -14,9 +13,9 @@ export function useQRCodeScan(
     // ? Get video stream
     {
         const permission = useRequestCamera(isScanning)
-        const [mediaStream, setMediaStream] = useState<MediaStream | null>(null)
+        const [mediaStream, setMediaStream] = React.useState<MediaStream | null>(null)
 
-        useEffect(() => {
+        React.useEffect(() => {
             async function start() {
                 if (permission !== 'granted' || !video.current) return
                 try {
@@ -54,9 +53,9 @@ export function useQRCodeScan(
     }
     // ? Do scan
     {
-        const scanner = useRef(new BarcodeDetector({ formats: ['qr_code'] }))
-        const lastScanning = useRef(false)
-        const errorTimes = useRef(0)
+        const scanner = React.useRef(new BarcodeDetector({ formats: ['qr_code'] }))
+        const lastScanning = React.useRef(false)
+        const errorTimes = React.useRef(0)
         useInterval(async () => {
             if (errorTimes.current >= 10)
                 if (errorTimes.current === 10) {

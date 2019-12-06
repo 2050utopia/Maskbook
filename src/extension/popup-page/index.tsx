@@ -1,6 +1,6 @@
+import '../../setup.react'
 import '../../social-network-provider/popup-page/index'
 import '../../setup.ui'
-import React, { useState } from 'react'
 
 import { ThemeProvider } from '@material-ui/styles'
 import { MaskbookLightTheme } from '../../utils/theme'
@@ -37,7 +37,7 @@ SSRRenderer(<Popup />)
 export function Popup() {
     const classes = useStyles()
 
-    const [showIdentitySelector, setShowIdentitySelector] = useState(false)
+    const [showIdentitySelector, setShowIdentitySelector] = React.useState(false)
     setTimeout(() => {
         if (getActivatedUI().networkIdentifier !== 'localhost') setShowIdentitySelector(true)
     })

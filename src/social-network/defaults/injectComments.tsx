@@ -1,4 +1,3 @@
-import React from 'react'
 import { PostInfo, SocialNetworkUI } from '../ui'
 import { DOMProxy, MutationObserverWatcher, ValueRef } from '@holoflows/kit/es'
 import { renderInShadowRoot } from '../../utils/jss/renderInShadowRoot'

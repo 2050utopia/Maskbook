@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import Auto from './1a4.auto'
 import Manual from './1a4.manual'
 import { geti18nString } from '../../utils/i18n'

@@ -1,7 +1,6 @@
 import { create } from 'jss'
 import { createGenerateClassName, jssPreset, StylesProvider, ThemeProvider } from '@material-ui/styles'
 import ReactDOM from 'react-dom'
-import React from 'react'
 import ConstructableStyleSheetsRenderer, {
     applyAdoptedStyleSheets,
     livingShadowRoots,

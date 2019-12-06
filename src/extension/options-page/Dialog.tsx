@@ -1,4 +1,3 @@
-import React from 'react'
 import { useHistory, useRouteMatch, RouteProps, RouteComponentProps } from 'react-router'
 import { Dialog, Toolbar, IconButton, Slide, Container } from '@material-ui/core'
 import { TransitionProps } from '@material-ui/core/transitions'

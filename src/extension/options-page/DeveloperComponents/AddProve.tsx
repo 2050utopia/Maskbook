@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -29,7 +28,7 @@ export function AddProve() {
     // Error: Error
     // false: Verify failed
     // true: Success
-    const [lastVerifyResult, setResult] = useState<Error | boolean | React.ReactNode>()
+    const [lastVerifyResult, setResult] = React.useState<Error | boolean | React.ReactNode>()
     return (
         <Card>
             <CardContent>

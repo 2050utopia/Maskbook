@@ -1,4 +1,3 @@
-import React, { useEffect, useRef, useState } from 'react'
 import Welcome1a1a from '../../../components/Welcomes/1a1a'
 import Welcome1a1b from '../../../components/Welcomes/1a1b'
 import Welcome1a2 from '../../../components/Welcomes/1a2'
@@ -236,9 +235,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default withRouter(function _WelcomePortal(props: RouteComponentProps) {
-    const [step, setStep] = useState(WelcomeState.LinkNewSocialNetworks)
+    const [step, setStep] = React.useState(WelcomeState.LinkNewSocialNetworks)
 
-    useEffect(() => {
+    React.useEffect(() => {
         fillRefs()
     }, [])
 
@@ -247,7 +246,7 @@ export default withRouter(function _WelcomePortal(props: RouteComponentProps) {
     const selectedId = useValueRef(selectedIdRef)
     const ownIds = useValueRef(ownedIdsRef)
 
-    useEffect(() => {
+    React.useEffect(() => {
         const search = new URLSearchParams(props.location.search)
 
         const isRestore = search.get('restore')
@@ -283,7 +282,7 @@ export default withRouter(function _WelcomePortal(props: RouteComponentProps) {
         }
     }, [props.location.search, selectedId.identifier])
 
-    const [mnemonic, setMnemonic] = useState<string | null>(null)
+    const [mnemonic, setMnemonic] = React.useState<string | null>(null)
 
     const { enqueueSnackbar } = useSnackbar()
 

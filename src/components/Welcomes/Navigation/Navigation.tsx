@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import Close from '@material-ui/icons/Close'
 import { geti18nString } from '../../../utils/i18n'
 import { Button, useTheme, MobileStepper, makeStyles } from '@material-ui/core'

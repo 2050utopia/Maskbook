@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Profile, Group } from '../../../database'
 import { ListItem, Theme, ListItemAvatar, ListItemText } from '@material-ui/core'
 import { OverridableComponent } from '@material-ui/core/OverridableComponent'

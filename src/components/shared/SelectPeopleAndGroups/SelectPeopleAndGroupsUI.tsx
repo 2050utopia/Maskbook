@@ -1,4 +1,3 @@
-import React, { useState, useCallback } from 'react'
 import { geti18nString } from '../../../utils/i18n'
 import { makeStyles, ListItem, ListItemText, InputBase, Button, List, Box } from '@material-ui/core'
 import { Profile, Group } from '../../../database'
@@ -52,7 +51,7 @@ export function SelectPeopleAndGroupsUI<ServeType extends Group | Profile = Pers
         }
     }, [ignoreMyself, myself, onSetSelected, selected])
 
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = React.useState('')
     const listBeforeSearch = items.filter(x => {
         if (ignoreMyself && myself && x.identifier.equals(myself.identifier)) return false
         if (selected.find(y => x.identifier.equals(y.identifier))) return false
@@ -108,7 +107,7 @@ export function SelectPeopleAndGroupsUI<ServeType extends Group | Profile = Pers
                 <InputBase
                     className={classes.input}
                     value={disabled ? '' : search}
-                    onChange={useCallback(e => setSearch(e.target.value), [])}
+                    onChange={React.useCallback(e => setSearch(e.target.value), [])}
                     onKeyDown={e => {
                         if (search === '' && e.key === 'Backspace') {
                             onSetSelected(selected.slice(0, selected.length - 1) as ServeType[])

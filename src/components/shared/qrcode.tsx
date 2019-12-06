@@ -1,13 +1,11 @@
-import React from 'react'
 import qr from 'qrcode'
-import { useRef, useEffect } from 'react'
 
 export function QrCode(props: {
     text: string
     canvasProps?: React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>
 }) {
-    const ref = useRef<HTMLCanvasElement | null>(null)
-    useEffect(() => {
+    const ref = React.useRef<HTMLCanvasElement | null>(null)
+    React.useEffect(() => {
         if (!ref.current) return
         qr.toCanvas(ref.current, props.text)
     }, [props.text])
