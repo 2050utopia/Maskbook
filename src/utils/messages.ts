@@ -41,4 +41,5 @@ interface MaskbookMessages {
     }
 }
 export const MessageCenter = new MC<MaskbookMessages>('maskbook-events')
+
 MessageCenter.serialization = Serialization
