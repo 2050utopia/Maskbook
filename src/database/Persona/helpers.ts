@@ -17,6 +17,7 @@ import {
     createPersonaDB,
     attachProfileDB,
     LinkedProfileDetails,
+    updatePersonaDB,
 } from './Persona.db'
 import { IdentifierMap } from '../IdentifierMap'
 import { getAvatarDataURL } from '../helpers/avatar'
@@ -111,6 +112,10 @@ export async function deletePersona(id: PersonaIdentifier, confirm: 'delete even
     }
     if (confirm === 'delete even with private') await deletePersonaDB(id, 'delete even with private', t as any)
     else if (confirm === 'safe delete') await safeDeletePersonaDB(id, t as any)
+}
+
+export async function renamePersona(identifier: PersonaIdentifier, nickname: string) {
+    return updatePersonaDB({ identifier, nickname })
 }
 
 export async function updateOrCreateProfile(rec: Pick<Profile, 'identifier'> & Partial<ProfileRecord>) {
