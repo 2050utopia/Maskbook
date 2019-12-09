@@ -231,9 +231,9 @@ export default function DashboardHomePage() {
                                     variant="contained"
                                     color="primary"
                                     className={classes.button}
-                                    component={Link}
-                                    onClick={exportData}
-                                    to="database/backup">
+                                    component={'a'}
+                                    loading={exportLoading}
+                                    onClick={exportData}>
                                     Backup
                                 </ActionButton>
                             </ListItemSecondaryAction>
