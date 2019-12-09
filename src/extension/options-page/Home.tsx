@@ -14,9 +14,8 @@ import {
     Container,
 } from '@material-ui/core'
 import { Link, useHistory } from 'react-router-dom'
-import { useMyIdentities } from '../../components/DataSource/useActivatedUI'
+import { useMyPersonas } from '../../components/DataSource/useActivatedUI'
 import Services from '../service'
-import { ProfileIdentifier } from '../../database/type'
 
 import { geti18nString } from '../../utils/i18n'
 
@@ -89,7 +88,7 @@ export default function DashboardHomePage() {
     const [exportLoading, setExportLoading] = React.useState(false)
 
     const classes = useStyles()
-    const identities = useMyIdentities()
+    const personas = useMyPersonas()
 
     const exportData = () => {
         setExportLoading(true)
@@ -153,7 +152,7 @@ export default function DashboardHomePage() {
                 <Typography className={classes.title} variant="h5" align="left">
                     My Personas
                 </Typography>
-                {!identities.length && (
+                {!personas.length && (
                     <Card raised elevation={1}>
                         <List disablePadding>
                             <ListItemWithAction key="initialize">
@@ -173,9 +172,9 @@ export default function DashboardHomePage() {
                     </Card>
                 )}
                 <div>
-                    {identities.map(i => (
+                    {personas.map(i => (
                         <Card className={classes.identity} raised elevation={1}>
-                            <PersonaCard identity={i} key={i.identifier.toText()} />
+                            <PersonaCard persona={i} key={i.identifier.toText()} />
                         </Card>
                     ))}
                 </div>
@@ -233,6 +232,7 @@ export default function DashboardHomePage() {
                                     color="primary"
                                     className={classes.button}
                                     component={Link}
+                                    onClick={exportData}
                                     to="database/backup">
                                     Backup
                                 </ActionButton>
