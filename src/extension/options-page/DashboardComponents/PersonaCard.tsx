@@ -15,6 +15,7 @@ import { geti18nString } from '../../../utils/i18n'
 import { PersonaDeleteDialog } from '../DashboardDialogs/Persona'
 import { DialogRouter } from '../DashboardDialogs/DialogBase'
 import ProfileBox from './ProfileBox'
+import { ProfileIdentifier } from '../../../database/type'
 interface Props {
     persona: Persona
 }
@@ -111,6 +112,16 @@ export default function PersonaCard({ persona }: Props) {
     const handleClose = () => {
         setAnchorEl(null)
     }
+
+    React.useEffect(() => {
+        if (persona.nickname) return
+        const profile = persona.linkedProfiles.__raw_map__.keys().next().value as string | undefined
+        if (!profile) Services.Identity.renamePersona(persona.identifier, persona.identifier.compressedPoint)
+        else
+            Services.Identity.queryProfile(ProfileIdentifier.fromString(profile)! as ProfileIdentifier)
+                .then(profile => profile.nickname || profile.identifier.userId)
+                .then(newName => Services.Identity.renamePersona(persona.identifier, newName))
+    }, [persona.identifier, persona.linkedProfiles.__raw_map__, persona.nickname])
 
     return (
         <>
