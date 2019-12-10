@@ -10,7 +10,7 @@ import { useSnackbar } from 'notistack'
 import { useColorProvider } from '../../../utils/theme'
 import { geti18nString } from '../../../utils/i18n'
 
-import { PersonaDeleteDialog } from '../DashboardDialogs/Persona'
+import { PersonaDeleteDialog, PersonaBackupDialog } from '../DashboardDialogs/Persona'
 import { DialogRouter } from '../DashboardDialogs/DialogBase'
 import ProfileBox from './ProfileBox'
 import { ProfileIdentifier } from '../../../database/type'
@@ -91,6 +91,8 @@ export default function PersonaCard({ persona }: Props) {
         })
     }
 
+    const [backupPersona, setBackupPersona] = useState(false)
+
     const titleRef = useRef<HTMLSpanElement | null>(null)
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -112,6 +114,11 @@ export default function PersonaCard({ persona }: Props) {
                 .then(newName => Services.Identity.renamePersona(persona.identifier, newName))
     }, [persona.identifier, persona.linkedProfiles, persona.linkedProfiles.__raw_map__, persona.nickname])
 
+    const dismissDialog = () => {
+        setBackupPersona(false)
+        setBackupPersona(false)
+    }
+
     return (
         <>
             <CardContent>
@@ -131,7 +138,7 @@ export default function PersonaCard({ persona }: Props) {
                                     onClose={handleClose}>
                                     <MenuItem onClick={() => setRename(true)}>Rename</MenuItem>
                                     <MenuItem onClick={copyPublicKey}>Copy Public Key</MenuItem>
-                                    <MenuItem onClick={handleClose}>
+                                    <MenuItem onClick={() => setBackupPersona(true)}>
                                         {geti18nString('dashboard_create_backup')}
                                     </MenuItem>
                                     <MenuItem onClick={() => setDeletePersona(true)} className={color.error}>
@@ -157,13 +164,20 @@ export default function PersonaCard({ persona }: Props) {
             <Divider />
             {deletePersona && (
                 <DialogRouter
+                    onExit={dismissDialog}
                     children={
                         <PersonaDeleteDialog
-                            declined={() => setDeletePersona(false)}
-                            confirmed={confirmDeletePersona}
+                            onDecline={dismissDialog}
+                            onConfirm={confirmDeletePersona}
                             persona={persona}
                         />
                     }
+                />
+            )}
+            {backupPersona && (
+                <DialogRouter
+                    onExit={dismissDialog}
+                    children={<PersonaBackupDialog onClose={dismissDialog} persona={persona} />}
                 />
             )}
         </>

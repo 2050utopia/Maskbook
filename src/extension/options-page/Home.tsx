@@ -85,6 +85,8 @@ export default function DashboardHomePage() {
     const personas = useMyPersonas()
 
     const exportData = () => {
+        // FIXME:
+        alert('dummy method')
         setExportLoading(true)
         Services.Welcome.backupMyKeyPair({
             download: true,
@@ -101,7 +103,6 @@ export default function DashboardHomePage() {
             <DialogRouter path="/database/restore" children={<DatabaseRestoreDialog />} />
             <DialogRouter path="/persona/create" children={<PersonaCreateDialog />} />
             <DialogRouter path="/persona/created" children={<PersonaCreatedDialog />} />
-            <DialogRouter path="/persona/backup" children={<PersonaBackupDialog />} />
             <DialogRouter path="/persona/import" children={<PersonaImportDialog />} />
             <DialogRouter path="/persona/success" children={<PersonaImportSuccessDialog />} />
             <DialogRouter path="/persona/failed" children={<PersonaImportFailedDialog />} />
@@ -134,8 +135,8 @@ export default function DashboardHomePage() {
                     </Card>
                 )}
                 <div>
-                    {personas.map(i => (
-                        <Card className={classes.identity} raised elevation={1}>
+                    {personas.map((i, index) => (
+                        <Card key={`cardIdentity-${index}`} className={classes.identity} raised elevation={1}>
                             <PersonaCard persona={i} key={i.identifier.toText()} />
                         </Card>
                     ))}
@@ -218,13 +219,10 @@ export default function DashboardHomePage() {
                 </Card>
             </section>
             <section className={classes.sections}>
+                {
+                    // FIXME:
+                }
                 DEBUG:
-                <Button color="secondary" component={Link} to="/welcome">
-                    real create persona
-                </Button>
-                <Button color="secondary" component={Link} to="/welcome?restore">
-                    real Import Persona
-                </Button>
                 <Button color="secondary" component={Link} to="/initialize">
                     initialize
                 </Button>
