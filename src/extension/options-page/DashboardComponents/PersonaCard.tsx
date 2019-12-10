@@ -45,6 +45,9 @@ const useStyles = makeStyles(theme =>
                 },
             },
         },
+        cursor: {
+            cursor: 'pointer',
+        },
     }),
 )
 
@@ -119,7 +122,7 @@ export default function PersonaCard({ persona }: Props) {
                                 {persona.nickname}
                             </span>
                             <Typography className="fullWidth" variant="body1" component="span" color="textSecondary">
-                                <SettingsIcon fontSize="small" onClick={handleClick} />
+                                <SettingsIcon className={classes.cursor} fontSize="small" onClick={handleClick} />
                                 <Menu
                                     anchorEl={anchorEl}
                                     keepMounted
